@@ -15,9 +15,28 @@ public class Cours {
     }
 
     public void ajouterEtudiant(Etudiant e) {
-        inscrits.add(e);
-        e.inscrire(this);
+        if(!inscrits.contains(e)) {
+            inscrits.add(e);
+            if(!e.getCoursSuivis().contains(this)) {
+                e.getCoursSuivis().add(this);
+            }
+        }
+
+
     }
 
+    public void afficherEtudiant() {
+        System.out.println("------Etudiant--------");
+        for(Etudiant e : inscrits) {
+            System.out.println("- " + e.toString());
+        }
+    }
 
+    @Override
+    public String toString() {
+        return "Cours{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                '}';
+    }
 }

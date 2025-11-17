@@ -15,7 +15,35 @@ public class Etudiant {
     }
 
     public void  inscrire(Cours c) {
-        coursSuivis.add(c);
+        if(!coursSuivis.contains(c)) {
+           coursSuivis.add(c);
+           c.ajouterEtudiant(this);
+        }
     }
 
+
+    public List<Cours> getCoursSuivis() {
+        return coursSuivis;
+    }
+    public int getId() {
+        return id;
+    }
+    public String getNom() {
+        return nom;
+    }
+
+    public void afficherCour() {
+        System.out.println("-----Cour--------");
+        for(Cours c: coursSuivis) {
+            System.out.println("- " + c.toString());
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Etudiant{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                '}';
+    }
 }
